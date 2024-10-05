@@ -11,9 +11,6 @@ BOLDGREEN="\e[1;${GREEN}"
 ENDCOLOR="\e[0m"
 UNDERLINEYELLOW="\e[4;${YELLOW}"
 
-moniker_name=$MONIKER_NAME
-
-
 echo -e "${BOLDCYAN}
   __                            _                  _                    
  (_   _ ._ o ._ _|_   |_       |_)  _   _   _  ._ |_)  _. |_  |_  o _|_ 
@@ -23,6 +20,7 @@ echo -e "${BOLDCYAN}
 echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
 sleep 2
 
+read -p "Enter your moniker name: " moniker_name
 echo -e "${BOLDGREEN}Your moniker name is: ${YELLOW}${moniker_name}${ENDCOLOR}"
 sleep 2
 
