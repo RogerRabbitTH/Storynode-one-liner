@@ -21,6 +21,7 @@ echo -e "${BOLDCYAN}
 echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
 sleep 2
 
+moniker_name=$1
 echo -e "${BOLDGREEN}Your moniker name is: ${YELLOW}${moniker_name}${ENDCOLOR}"
 sleep 2
 
