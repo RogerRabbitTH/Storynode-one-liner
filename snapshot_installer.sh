@@ -18,6 +18,14 @@ echo -e "${BOLDCYAN}
 "
 echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
 
+echo -e "${BOLDYELLOW}This script may take 15-30 minutes to complete. Do you want to continue? (y/n)${ENDCOLOR}"
+read -p "Enter your choice: " choice
+
+if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
+    echo -e "${RED}Operation cancelled by user.${ENDCOLOR}"
+    exit 1
+fi
+
 echo -e "${BOLDYELLOW}INSTALLING TOOLS${ENDCOLOR}"
 sleep 2
 
