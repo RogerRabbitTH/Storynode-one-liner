@@ -21,6 +21,8 @@ echo -e "${BOLDCYAN}
 echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
 sleep 2
 
+read -p "Enter your moniker name: " moniker_name
+
 echo -e "${BOLDYELLOW}Updating packages${ENDCOLOR}"
 sudo apt update
 sudo apt-get update
@@ -83,7 +85,6 @@ source $HOME/.bash_profile
 echo -e "${BOLDYELLOW}Story version${ENDCOLOR}"
 story version
 
-read -p "Enter your moniker name: " moniker_name
 story init --network iliad --moniker "${moniker_name}"
 echo -e "${BOLDGREEN}Your moniker name is: ${YELLOW}${moniker_name}${ENDCOLOR}"
 
