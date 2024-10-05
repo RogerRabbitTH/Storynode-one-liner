@@ -146,7 +146,7 @@ rm story-linux-amd64-0.10.1-57567e5.tar.gz
 rm node_installer.sh
 
 echo -e "${BOLDGREEN}Starting services${ENDCOLOR}"
-sleep 1
+sleep 2
 
 sudo systemctl daemon-reload && \
 sudo systemctl start story-geth && \
