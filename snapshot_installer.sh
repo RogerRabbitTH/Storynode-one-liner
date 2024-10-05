@@ -81,3 +81,5 @@ sudo systemctl start story-geth
 sleep 2
 
 echo -e "${BOLDGREEN}SUCCESS !!!${ENDCOLOR}"
+
+rm snapshot_installer.sh
