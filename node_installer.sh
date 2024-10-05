@@ -146,3 +146,7 @@ sleep 2
 sudo systemctl daemon-reload && \
 sudo systemctl start story-geth && \
 sudo systemctl enable story-geth
+
+sudo systemctl daemon-reload && \
+sudo systemctl start story && \
+sudo systemctl enable story && \
