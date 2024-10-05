@@ -54,6 +54,8 @@ done
 echo -e "${BOLDCYAN}Download Story-Geth binary${ENDCOLOR}"
 sleep 1
 
+source ~/.bash_profile
+
 wget https://story-geth-binaries.s3.us-west-1.amazonaws.com/geth-public/geth-linux-amd64-0.9.3-b224fdf.tar.gz
 tar -xzvf geth-linux-amd64-0.9.3-b224fdf.tar.gz
 [ ! -d "$HOME/go/bin" ] && mkdir -p $HOME/go/bin
