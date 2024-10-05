@@ -138,6 +138,13 @@ echo -e "Configuration file updated successfully with new peers"
 echo "Failed to update configuration file."
 fi
 
+echo -e "${BOLDYELLOW}Clearing unnecessary files${ENDCOLOR}"
+sleep 2
+
+rm geth-linux-amd64-0.9.3-b224fdf.tar.gz
+rm story-linux-amd64-0.10.1-57567e5.tar.gz
+rm node_installer.sh
+
 echo -e "${BOLDGREEN}Starting services${ENDCOLOR}"
 sleep 1
 
