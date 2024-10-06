@@ -83,4 +83,5 @@ return_to_menu() {
     done
 }
 
+# Start the menu loop
 return_to_menu
