@@ -1,8 +1,6 @@
 #!/bin/bash
 
 cd $HOME
-mkdir -p StoryNode
-cd StoryNode
 
 RED="\e[31m"
 GREEN="\e[32m"
@@ -42,6 +40,7 @@ handle_main_choice() {
             ;;
         5)
             echo -e "${BOLDYELLOW}Exiting...${ENDCOLOR}"
+            rm main.sh
             exit 0
             ;;
         *)
