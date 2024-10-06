@@ -88,6 +88,3 @@ return_to_menu() {
         handle_choice $choice
     done
 }
-
-# Start the menu loop
-return_to_menu
