@@ -18,13 +18,19 @@ echo -e "${BOLDCYAN}
 "
 echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
 
-echo -e "${BOLDYELLOW}This script may take 15-30 minutes to complete. Do you want to continue? (y/n)${ENDCOLOR}"
-read -p "Enter your choice: " choice
+echo -e "${BOLDYELLOW}This script may take 30 minutes to 1 hour to complete. Do you want to continue? (y/n)${ENDCOLOR}"
 
-if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
-    echo -e "${RED}Operation cancelled by user.${ENDCOLOR}"
-    exit 1
-fi
+while true; do
+    read -p "Enter your choice: " choice
+    if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+        break
+    elif [[ "$choice" == "n" || "$choice" == "N" ]]; then
+        echo -e "${RED}Operation cancelled by user.${ENDCOLOR}"
+        exit 1
+    else
+        echo -e "${YELLOW}Please enter 'y' for yes or 'n' for no.${ENDCOLOR}"
+    fi
+done
 
 echo -e "${BOLDYELLOW}INSTALLING TOOLS${ENDCOLOR}"
 sleep 2
