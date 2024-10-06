@@ -40,7 +40,6 @@ handle_main_choice() {
             ;;
         5)
             echo -e "${BOLDYELLOW}Exiting...${ENDCOLOR}"
-            rm main.sh
             exit 0
             ;;
         *)
