@@ -67,7 +67,6 @@ handle_choice() {
             ;;
         6)
             echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
-            curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
             exit 0
             ;;
         *)
