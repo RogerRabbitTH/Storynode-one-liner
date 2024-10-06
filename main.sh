@@ -59,7 +59,7 @@ while true; do
     ███████║   ██║   ╚██████╔╝██║  ██║   ██║       ██║ ╚████║╚██████╔╝██████╔╝███████╗
     ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝                                                                                                        
     "
-    echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
+    echo -e "${YELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
     show_main_menu
     read -p "Enter your choice: " choice
     handle_main_choice $choice
