@@ -17,7 +17,6 @@ show_menu() {
     echo "4. Check block sync left"
     echo "5. Restart node"
     echo "6. Return to Main Menu"
-    echo "7. Exit"
 }
 
 handle_choice() {
@@ -71,10 +70,6 @@ handle_choice() {
             curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
             exit 0
             ;;
-        7)
-            echo -e "${RED}Exiting...${ENDCOLOR}"
-            exit 0
-            ;;
         *)
             echo -e "${RED}Invalid option. Please try again.${ENDCOLOR}"
             ;;
@@ -88,3 +83,5 @@ return_to_menu() {
         handle_choice $choice
     done
 }
+
+return_to_menu
