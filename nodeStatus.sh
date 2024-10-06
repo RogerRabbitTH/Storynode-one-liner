@@ -25,7 +25,6 @@ handle_choice() {
         1)
             echo -e "${BOLDGREEN}Checking logs story-geth${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
-            # Set up a trap to catch Ctrl+C and return to the menu
             trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             sudo journalctl -u story-geth -f -o cat
             ;;
@@ -37,10 +36,14 @@ handle_choice() {
             ;;
         3)
             echo -e "${BOLDGREEN}Checking sync status${ENDCOLOR}"
+            echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
+            trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             curl localhost:26657/status | jq
             ;;
         4)
             echo -e "${BOLDGREEN}Check block sync left${ENDCOLOR}"
+            echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
+            trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             while true; do
                 local_height=$(curl -s localhost:26657/status | jq -r '.result.sync_info.latest_block_height');
                 network_height=$(curl -s https://rpc-story.josephtran.xyz/status | jq -r '.result.sync_info.latest_block_height');
@@ -60,6 +63,8 @@ handle_choice() {
             sudo systemctl enable story
             sleep 2
             echo -e "${BOLDGREEN}Node Successfully Restarted${ENDCOLOR}"
+            # Automatically return to the menu after restarting
+            return_to_menu
             ;;
         6)
             echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
