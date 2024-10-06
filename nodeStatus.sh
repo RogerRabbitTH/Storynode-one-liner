@@ -22,19 +22,19 @@ show_menu() {
 handle_choice() {
     case $1 in
         1)
-            echo -e "${BOLDGREEN}Checking logs story-geth${ENDCOLOR}"
+            echo -e "${BOLDGREEN}Check logs story-geth${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
             trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             sudo journalctl -u story-geth -f -o cat
             ;;
         2)
-            echo -e "${BOLDGREEN}Checking logs story${ENDCOLOR}"
+            echo -e "${BOLDGREEN}Check logs story${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
             trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             sudo journalctl -u story -f -o cat
             ;;
         3)
-            echo -e "${BOLDGREEN}Checking sync status${ENDCOLOR}"
+            echo -e "${BOLDGREEN}Check sync status${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
             trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             curl localhost:26657/status | jq
