@@ -1,5 +1,8 @@
 #!/bin/bash
+
 cd $HOME
+mkdir -p StoryNode
+cd StoryNode
 
 RED="\e[31m"
 GREEN="\e[32m"
@@ -26,14 +29,22 @@ confirm_continue() {
     done
 }
 
-echo -e "${BOLDCYAN}
-  __                            _                  _                    
- (_   _ ._ o ._ _|_   |_       |_)  _   _   _  ._ |_)  _. |_  |_  o _|_ 
- __) (_ |  | |_) |_   |_) \/   | \ (_) (_| (/_ |  | \ (_| |_) |_) |  |_ 
-             |            /             _|                              
-"
-echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
-sleep 2
+return_to_menu() {
+    while true; do
+        echo -e "${BOLDYELLOW}Do you want to return to the main menu? (y/n)${ENDCOLOR}"
+        read -p "Enter your choice: " choice
+        if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+            echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
+            curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
+            exit 0
+        elif [[ "$choice" == "n" || "$choice" == "N" ]]; then
+            echo -e "${BOLDGREEN}Exiting...${ENDCOLOR}"
+            exit 0
+        else
+            echo -e "${YELLOW}Please enter 'y' for yes or 'n' for no.${ENDCOLOR}"
+        fi
+    done
+}
 
 echo -e "${BOLDRED}WARNING: Do not upgrade before block height 1,325,860.${ENDCOLOR}"
 sleep 2
@@ -49,13 +60,13 @@ sleep 2
 
 echo -e "${BOLDCYAN}Downloading new binary${ENDCOLOR}"
 
-cd $HOME
+cd $HOME/StoryNode
 wget https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.11.0-aac4bfe.tar.gz
 tar -xzvf story-linux-amd64-0.11.0-aac4bfe.tar.gz
 sleep 2
 
 echo -e "${BOLDCYAN}Replace new binary version${ENDCOLOR}"
-cp $HOME/story-linux-amd64-0.11.0-aac4bfe/story $(which story)
+cp $HOME/StoryNode/story-linux-amd64-0.11.0-aac4bfe/story $(which story)
 source $HOME/.bash_profile
 story version
 
@@ -65,3 +76,8 @@ sudo systemctl start story &&\
 sudo systemctl status story
 
 echo -e "${BOLDGREEN}Node updated successfully${ENDCOLOR}"
+
+rm update_node.sh
+
+# Prompt to return to menu or exit
+return_to_menu

@@ -16,7 +16,8 @@ show_menu() {
     echo "3. Checking sync status"
     echo "4. Check block sync left"
     echo "5. Restart node"
-    echo "6. Exit"
+    echo "6. Return to Main Menu"
+    echo "7. Exit"
 }
 
 handle_choice() {
@@ -60,6 +61,11 @@ handle_choice() {
             echo -e "${BOLDGREEN}Node Successfully Restarted${ENDCOLOR}"
             ;;
         6)
+            echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
+            curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
+            exit 0
+            ;;
+        7)
             echo -e "${RED}Exiting...${ENDCOLOR}"
             exit 0
             ;;

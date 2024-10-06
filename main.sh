@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd $HOME
+mkdir -p StoryNode
+cd StoryNode
+
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -21,11 +25,11 @@ show_main_menu() {
 handle_main_choice() {
     case $1 in
         1)
-            echo -e "${BOLDGREEN}Node Installer...${ENDCOLOR}"
+            echo -e "${BOLDGREEN}Node Install...${ENDCOLOR}"
             ./node_installer.sh
             ;;
         2)
-            echo -e "${BOLDGREEN}Snapshot Installer...${ENDCOLOR}"
+            echo -e "${BOLDGREEN}Snapshot Install...${ENDCOLOR}"
             ./snapshot_installer.sh
             ;;
         3)
@@ -47,11 +51,13 @@ handle_main_choice() {
 }
 
 while true; do
-    echo -e "${BOLDCYAN}
-    __                            _                  _                    
-    (_   _ ._ o ._ _|_   |_       |_)  _   _   _  ._ |_)  _. |_  |_  o _|_ 
-    __) (_ |  | |_) |_   |_) \/   | \ (_) (_| (/_ |  | \ (_| |_) |_) |  |_ 
-                |            /             _|                              
+    echo "
+    ███████╗████████╗ ██████╗ ██████╗ ██╗   ██╗    ███╗   ██╗ ██████╗ ██████╗ ███████╗
+    ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝    ████╗  ██║██╔═══██╗██╔══██╗██╔════╝
+    ███████╗   ██║   ██║   ██║██████╔╝ ╚████╔╝     ██╔██╗ ██║██║   ██║██║  ██║█████╗  
+    ╚════██║   ██║   ██║   ██║██╔══██╗  ╚██╔╝      ██║╚██╗██║██║   ██║██║  ██║██╔══╝  
+    ███████║   ██║   ╚██████╔╝██║  ██║   ██║       ██║ ╚████║╚██████╔╝██████╔╝███████╗
+    ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝                                                                                                        
     "
     echo -e "${UNDERLINEYELLOW}Special thanks to josephtran for his documentation.${ENDCOLOR}"
     show_main_menu
