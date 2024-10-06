@@ -25,21 +25,22 @@ handle_choice() {
         1)
             echo -e "${BOLDGREEN}Checking logs story-geth${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
+            # Set up a trap to catch Ctrl+C and return to the menu
+            trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             sudo journalctl -u story-geth -f -o cat
             ;;
         2)
             echo -e "${BOLDGREEN}Checking logs story${ENDCOLOR}"
             echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
+            trap 'echo -e "\nReturning to menu..."; return_to_menu' SIGINT
             sudo journalctl -u story -f -o cat
             ;;
         3)
             echo -e "${BOLDGREEN}Checking sync status${ENDCOLOR}"
-            echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
             curl localhost:26657/status | jq
             ;;
         4)
             echo -e "${BOLDGREEN}Check block sync left${ENDCOLOR}"
-            echo -e "${BOLDYELLOW}Press Ctrl+C to stop${ENDCOLOR}"
             while true; do
                 local_height=$(curl -s localhost:26657/status | jq -r '.result.sync_info.latest_block_height');
                 network_height=$(curl -s https://rpc-story.josephtran.xyz/status | jq -r '.result.sync_info.latest_block_height');
@@ -75,8 +76,13 @@ handle_choice() {
     esac
 }
 
-while true; do
-    show_menu
-    read -p "Enter your choice: " choice
-    handle_choice $choice
-done
+return_to_menu() {
+    while true; do
+        show_menu
+        read -p "Enter your choice: " choice
+        handle_choice $choice
+    done
+}
+
+# Start the menu loop
+return_to_menu
