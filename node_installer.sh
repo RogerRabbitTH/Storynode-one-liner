@@ -166,4 +166,5 @@ sudo systemctl enable story
 
 echo -e "${BOLDGREEN}SUCCESS !!!${ENDCOLOR}"
 echo -e "${BOLDGREEN}Services started${ENDCOLOR}"
-echo -e "${BOLDGREEN}${ENDCOLOR}"
+echo -e "${BOLDGREEN}Back to main menu${ENDCOLOR}"
+sleep 2
