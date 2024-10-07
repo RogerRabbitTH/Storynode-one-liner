@@ -33,11 +33,13 @@ echo -e "${BOLDGREEN}Your moniker name is: ${YELLOW}${moniker_name}${ENDCOLOR}"
 sleep 2
 
 echo -e "${BOLDYELLOW}Updating packages${ENDCOLOR}"
-sudo apt update
-sudo apt-get update
+sudo apt update -y
+sudo apt-get update -y
 
 echo -e "${BOLDYELLOW}Installing packages${ENDCOLOR}"
 sudo apt install curl git make jq build-essential gcc unzip wget lz4 aria2 -y
+sudo apt upgrade -y
+sudo apt-get update -y
 
 packages=(
   curl
