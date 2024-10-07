@@ -10,24 +10,7 @@ BOLDGREEN="\e[1;${GREEN}"
 ENDCOLOR="\e[0m"
 UNDERLINEYELLOW="\e[4;${YELLOW}"
 
-return_to_menu() {
-    while true; do
-        echo -e "${BOLDYELLOW}Do you want to return to the main menu? (y/n)${ENDCOLOR}"
-        read -p "Enter your choice: " choice
-        if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
-            echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
-            curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
-            exit 0
-        elif [[ "$choice" == "n" || "$choice" == "N" ]]; then
-            echo -e "${BOLDGREEN}Exiting...${ENDCOLOR}"
-            exit 0
-        else
-            echo -e "${YELLOW}Please enter 'y' for yes or 'n' for no.${ENDCOLOR}"
-        fi
-    done
-}
-
-echo -e "${BOLDYELLOW}This script may take 30 minutes to 1 hour to complete. Do you want to continue? (y/n)${ENDCOLOR}"
+echo -e "${RED}This script may take 30 minutes to 1 hour to complete. Do you want to continue? (y/n)${ENDCOLOR}"
 
 while true; do
     read -p "Enter your choice: " choice
@@ -42,6 +25,8 @@ while true; do
 done
 
 echo -e "${BOLDYELLOW}INSTALLING TOOLS${ENDCOLOR}"
+sudo apt-get install wget lz4 aria2 pv -y
+sudo apt upgrade -y
 sleep 2
 
 echo -e "${BOLDYELLOW}STOP NODE${ENDCOLOR}"
@@ -96,5 +81,5 @@ sudo systemctl start story-geth
 sleep 2
 
 echo -e "${BOLDGREEN}SUCCESS !!!${ENDCOLOR}"
-
-return_to_menu
+echo -e "${BOLDGREEN}Back to main menu${ENDCOLOR}"
+sleep 2
