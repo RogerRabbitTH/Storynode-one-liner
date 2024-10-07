@@ -29,23 +29,6 @@ confirm_continue() {
     done
 }
 
-return_to_menu() {
-    while true; do
-        echo -e "${BOLDYELLOW}Do you want to return to the main menu? (y/n)${ENDCOLOR}"
-        read -p "Enter your choice: " choice
-        if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
-            echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
-            curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
-            exit 0
-        elif [[ "$choice" == "n" || "$choice" == "N" ]]; then
-            echo -e "${BOLDGREEN}Exiting...${ENDCOLOR}"
-            exit 0
-        else
-            echo -e "${YELLOW}Please enter 'y' for yes or 'n' for no.${ENDCOLOR}"
-        fi
-    done
-}
-
 echo -e "${BOLDRED}WARNING: Do not upgrade before block height 1,325,860.${ENDCOLOR}"
 sleep 2
 
@@ -78,6 +61,3 @@ sudo systemctl status story
 echo -e "${BOLDGREEN}Node updated successfully${ENDCOLOR}"
 
 rm update_node.sh
-
-# Prompt to return to menu or exit
-return_to_menu
