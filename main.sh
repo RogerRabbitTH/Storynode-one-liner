@@ -15,9 +15,10 @@ show_main_menu() {
     echo -e "${BOLDCYAN}Main Menu - Please select an option:${ENDCOLOR}"
     echo "1. Node Install"
     echo "2. Snapshot Install"
-    echo "3. Update Node"
-    echo "4. CheckNode Status"
-    echo "5. Exit"
+    echo "3. Create Validator"  
+    echo "4. Update Node" 
+    echo "5. Check Node Status"
+    echo "6. Exit"
 }
 
 handle_main_choice() {
@@ -31,14 +32,18 @@ handle_main_choice() {
             curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/snapshot_installer.sh && chmod +x snapshot_installer.sh && ./snapshot_installer.sh
             ;;
         3)
+            echo -e "${BOLDGREEN}Create Validator...${ENDCOLOR}"
+            curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/create_validator.sh && chmod +x create_validator.sh && ./create_validator.sh
+            ;;
+        4)
             echo -e "${BOLDGREEN}Update Node...${ENDCOLOR}"
             curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/update_node.sh && chmod +x update_node.sh && ./update_node.sh
             ;;
-        4)
+        5)
             echo -e "${BOLDGREEN}Node Status...${ENDCOLOR}"
             curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/nodeStatus.sh && chmod +x nodeStatus.sh && ./nodeStatus.sh
             ;;
-        5)
+        6)
             echo -e "${BOLDYELLOW}Exiting...${ENDCOLOR}"
             exit 0
             ;;

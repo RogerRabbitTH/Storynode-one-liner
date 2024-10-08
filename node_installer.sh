@@ -11,23 +11,6 @@ BOLDGREEN="\e[1;${GREEN}"
 ENDCOLOR="\e[0m"
 UNDERLINEYELLOW="\e[4;${YELLOW}"
 
-# return_to_menu() {
-#     while true; do
-#         echo -e "${BOLDYELLOW}Do you want to return to the main menu? (y/n)${ENDCOLOR}"
-#         read -p "Enter your choice: " choice
-#         if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
-#             echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
-#             curl -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/main.sh && chmod +x main.sh && ./main.sh
-#             exit 0
-#         elif [[ "$choice" == "n" || "$choice" == "N" ]]; then
-#             echo -e "${BOLDGREEN}Exiting...${ENDCOLOR}"
-#             exit 0
-#         else
-#             echo -e "${YELLOW}Please enter 'y' for yes or 'n' for no.${ENDCOLOR}"
-#         fi
-#     done
-# }
-
 read -p "Enter your moniker name: " moniker_name
 echo -e "${BOLDGREEN}Your moniker name is: ${YELLOW}${moniker_name}${ENDCOLOR}"
 sleep 2
