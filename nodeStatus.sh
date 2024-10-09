@@ -15,8 +15,9 @@ show_menu() {
     echo "2. Checking logs story"
     echo "3. Checking sync status"
     echo "4. Check block sync left"
-    echo "5. Restart node"
-    echo "6. Return to Main Menu"
+    echo "5. Get your validator info"
+    echo "6. Restart node"
+    echo "7. Return to Main Menu"
 }
 
 handle_choice() {
@@ -52,6 +53,10 @@ handle_choice() {
             done
             ;;
         5)
+            echo -e "${BOLDGREEN}Get your validator info${ENDCOLOR}"
+            curl -s localhost:26657/status | jq -r '.result.validator_info'
+            ;;
+        6)
             echo -e "${BOLDYELLOW}Restart node${ENDCOLOR}"
             sudo systemctl daemon-reload && \
             sudo systemctl start story-geth && \
@@ -65,7 +70,7 @@ handle_choice() {
             # Automatically return to the menu after restarting
             return_to_menu
             ;;
-        6)
+        7)
             echo -e "${BOLDGREEN}Returning to main menu...${ENDCOLOR}"
             exit 0
             ;;

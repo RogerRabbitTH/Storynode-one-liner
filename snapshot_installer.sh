@@ -24,17 +24,19 @@ while true; do
     fi
 done
 
+# Install tools
 echo -e "${BOLDYELLOW}INSTALLING TOOLS${ENDCOLOR}"
 sudo apt-get install wget lz4 aria2 pv -y
 sudo apt upgrade -y
 sleep 2
 
+# Stop node
 echo -e "${BOLDYELLOW}STOP NODE${ENDCOLOR}"
 sleep 1
 sudo systemctl stop story
 sudo systemctl stop story-geth
 
-
+# Download snapshots
 echo -e "${BOLDGREEN}DOWNLOADING SNAPSHOT${ENDCOLOR}"
 sleep 2
 
@@ -49,16 +51,18 @@ cd $HOME
 rm -f Geth_snapshot.lz4
 wget --show-progress https://story.josephtran.co/Geth_snapshot.lz4
 
+# Backup priv_validator_state.json
 echo -e "${BOLDGREEN}Backup priv_validator_state.json${ENDCOLOR}"
 sleep 2
 
 cp ~/.story/story/data/priv_validator_state.json ~/.story/priv_validator_state.json.backup
 
+# Remove old data
 echo -e "${RED}Remove old data${ENDCOLOR}"
+rm -rf ~/.story/story/data
+rm -rf ~/.story/geth/iliad/geth/chaindata
 
-echo -e "${BOLDYELLOW}Decompress snapshot${ENDCOLOR}"
-sleep 2
-
+# Decompress snapshots
 echo -e "${BOLDCYAN}Decompress story snapshot${ENDCOLOR}"
 sudo mkdir -p /root/.story/story/data
 lz4 -d -c Story_snapshot.lz4 | pv | sudo tar xv -C ~/.story/story/ > /dev/null
@@ -72,8 +76,10 @@ sleep 2
 echo -e "${BOLDYELLOW}Move priv_validator_state.json back${ENDCOLOR}"
 sleep 2
 
+# Move priv_validator_state.json back
 cp ~/.story/priv_validator_state.json.backup ~/.story/story/data/priv_validator_state.json
 
+# Restart node
 echo -e "${BOLDYELLOW}Restart node${ENDCOLOR}"
 
 sudo systemctl start story

@@ -1,9 +1,5 @@
 #!/bin/bash
 
-cd $HOME
-mkdir -p StoryNode
-cd StoryNode
-
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -35,7 +31,7 @@ sleep 2
 echo -e "${BOLDYELLOW}Do you want to update the node? (y/n)${ENDCOLOR}"
 confirm_continue
 
-####### update node #######
+####### update node ########
 
 echo -e "${BOLDYELLOW}Stopping node${ENDCOLOR}"
 sudo systemctl stop story
@@ -53,11 +49,10 @@ cp $HOME/StoryNode/story-linux-amd64-0.11.0-aac4bfe/story $(which story)
 source $HOME/.bash_profile
 story version
 
+# Restart node
 echo -e "${BOLDYELLOW}Restart node${ENDCOLOR}"
 sudo systemctl daemon-reload && \
 sudo systemctl start story &&\
 sudo systemctl status story
 
 echo -e "${BOLDGREEN}Node updated successfully${ENDCOLOR}"
-
-rm update_node.sh

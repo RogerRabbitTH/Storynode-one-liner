@@ -11,6 +11,7 @@ BOLDYELLOW="\e[1;${YELLOW}"
 BOLDGREEN="\e[1;${GREEN}"
 ENDCOLOR="\e[0m"
 
+# Show main menu
 show_main_menu() {
     echo -e "${BOLDCYAN}Main Menu - Please select an option:${ENDCOLOR}"
     echo "1. Node Install"
@@ -18,9 +19,11 @@ show_main_menu() {
     echo "3. Create Validator"  
     echo "4. Update Node" 
     echo "5. Check Node Status"
-    echo "6. Exit"
+    echo "6. Delete Node"
+    echo "7. Exit"
 }
 
+# Handle main menu choice
 handle_main_choice() {
     case $1 in
         1)
@@ -44,6 +47,10 @@ handle_main_choice() {
             curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/nodeStatus.sh && chmod +x nodeStatus.sh && ./nodeStatus.sh
             ;;
         6)
+            echo -e "${BOLDGREEN}Delete Node...${ENDCOLOR}"
+            curl -s -O https://raw.githubusercontent.com/RogerRabbitTH/Storynode-one-liner/main/delete_node.sh && chmod +x delete_node.sh && ./delete_node.sh
+            ;;
+        7)
             echo -e "${BOLDYELLOW}Exiting...${ENDCOLOR}"
             exit 0
             ;;
@@ -53,6 +60,7 @@ handle_main_choice() {
     esac
 }
 
+# Main loop
 while true; do
     echo "
     ███████╗████████╗ ██████╗ ██████╗ ██╗   ██╗    ███╗   ██╗ ██████╗ ██████╗ ███████╗
