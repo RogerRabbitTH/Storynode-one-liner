@@ -39,13 +39,13 @@ sleep 2
 
 echo -e "${BOLDCYAN}Downloading new binary${ENDCOLOR}"
 
-cd $HOME/StoryNode
+cd $HOME
 wget https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.11.0-aac4bfe.tar.gz
 tar -xzvf story-linux-amd64-0.11.0-aac4bfe.tar.gz
 sleep 2
 
 echo -e "${BOLDCYAN}Replace new binary version${ENDCOLOR}"
-cp $HOME/StoryNode/story-linux-amd64-0.11.0-aac4bfe/story $(which story)
+cp $HOME/story-linux-amd64-0.11.0-aac4bfe/story $(which story)
 source $HOME/.bash_profile
 story version
 
